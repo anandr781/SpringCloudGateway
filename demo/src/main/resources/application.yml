@@ -1,0 +1,56 @@
+server:
+  port: 9090
+  footprint: SpringCloudGateway
+
+---
+spring:
+  cloud:
+    gateway:
+      #SSL Termination - and overriding default trust store location with a custom cert
+      #This is needed if the Gateway routes to https targets
+      #      httpclient:
+      #        ssl:
+      #          trustedX509Certificates:
+      #            - cert1.pem
+      #            - cert2.pem
+      #        #These are TLS Handshake defaults for https targets
+      #          handshake-timeout-millis: 10000
+      #          close-notify-flush-timeout-millis: 3000
+      #          close-notify-read-timeout-millis: 0
+      #CORS Configuration
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "localhost"  #change the CORS setting to the right domain/authority
+      forwarded-enabled: true
+      x-forwarded:
+        for-enabled: true
+        for-append: true
+        host-enabled: true
+        host-append: true
+        proto-enabled: true
+      default-filters:
+        - name: GlobalFilterFactory
+      routes:
+        - id: appRoute1
+          uri: https://junkapp1.xyz.com
+          predicates:
+            - Path=/junk1/gInfo/**
+            - Custom   #Remove this line , this was just to illustrate how to build customRoutePredicateFactory
+          filters:
+            - TNToolsRewritePath=/tnrecruit(?<segment>/?.*), $\{segment} #(replaces /foo/bar with only /bar )
+        - id: appRoute2
+          uri: https://junkapp2.xyz.com
+          predicates:
+            - Path=/junk2/gInfo/**
+          filters:
+            - TNToolsRewritePath=/tnhomepage(?<segment>/?.*), $\{segment}
+        - id: appRoute3
+          uri: https://junkapp3.xyz.com
+          predicates:
+            - Path=/junk3/gInfo/**
+          filters:
+            - TNToolsRewritePath=/tnplan(?<segment>/?.*), $\{segment}
+        - id: ADFSroute1
+          url:
+
