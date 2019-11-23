@@ -30,6 +30,7 @@ public class TNToolsRewritePathGatewayFilterFactory extends RewritePathGatewayFi
                 String newPath = path.replaceAll(config.getRegexp(), replacement); //this produces /bar
 
                 //TODO : Log the SrcIP : req.remoteAddress , OldPath - path , NewRewrittenPath - newPath
+                System.out.print(req.getRemoteAddress().toString() + ","+ path+ ","+newPath);
                 ServerHttpRequest request = req.mutate().path(newPath).build(); //mutate and new copy of the request object
 
                 exchange.getAttributes().put(GATEWAY_REQUEST_URL_ATTR, request.getURI()); //set it as the actual request by Gateway

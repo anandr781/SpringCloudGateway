@@ -4,9 +4,9 @@ import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 
-public class PreRequestFilterFactory extends AbstractGatewayFilterFactory<PreRequestFilterFactory.Config> {
+    public class PreRequestGatewayFilterFactory extends AbstractGatewayFilterFactory<PreRequestGatewayFilterFactory.Config> {
 
-    public PreRequestFilterFactory() {
+    public PreRequestGatewayFilterFactory() {
         super(Config.class);
     }
 

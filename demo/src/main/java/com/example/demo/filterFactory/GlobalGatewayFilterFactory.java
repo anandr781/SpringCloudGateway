@@ -7,9 +7,9 @@ import org.springframework.stereotype.Component;
 
 
 @Component
-public class GlobalFilterFactory extends AbstractGatewayFilterFactory<GlobalFilterFactory.Config> {
+public class GlobalGatewayFilterFactory extends AbstractGatewayFilterFactory<GlobalGatewayFilterFactory.Config> {
 
-    public GlobalFilterFactory() {
+    public GlobalGatewayFilterFactory() {
         super(Config.class);
     }
 
