@@ -28,3 +28,8 @@ A minimal API Gateway implementation with Spring Cloud.
 
 ### API Gateway and Service Mesh in Action
 _The key differentiators between API Gateways and service mesh is that API Gateways is a key part of exposing API/Edge services where service mesh is merely an inter-service communication infrastructure which doesn’t have any business notion of your solution._
+
+### The current implementation 
+ * AbstractRoutePredicateFactory -> Base class which when extended provides predicate functionality for interception
+ * AbstractGatewayFilterFactory -> Base class for all GatewayFilterFactory , provides a GatewayFilter to the upstream pipeline (ex., pipes and filters)
+ * A CustomRewritePathGatewayFilterFactory -> Custom implementation of a RewritePathGatewayFilterFactory
