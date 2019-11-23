@@ -1,7 +1,7 @@
 # SpringCloudGateway
 A minimal API Gateway implementation with Spring Cloud. 
 
-###API Gateway concerns are as follows : 
+### API Gateway concerns are as follows : 
 
 * High Performance / Non-Blocking (NIO) serving of request
 * Load balancing
