@@ -23,6 +23,7 @@ public class CustomRoutePredicateFactory extends AbstractRoutePredicateFactory<C
         //KEYPOINT: replace this lambda expression with any predicate object
         Predicate<ServerWebExchange> swe = s -> s.getRequest().getHeaders().containsKey(XForwardedHeadersFilter.X_FORWARDED_HOST_HEADER);
         return swe;
+
     }
 
     public static class Config {

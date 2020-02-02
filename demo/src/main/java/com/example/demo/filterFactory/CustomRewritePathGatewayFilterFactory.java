@@ -13,7 +13,7 @@ import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.a
 
 
 @Component
-public class TNToolsRewritePathGatewayFilterFactory extends RewritePathGatewayFilterFactory {
+public class CustomRewritePathGatewayFilterFactory extends RewritePathGatewayFilterFactory {
 
     @Override
     public GatewayFilter apply(Config config) {
