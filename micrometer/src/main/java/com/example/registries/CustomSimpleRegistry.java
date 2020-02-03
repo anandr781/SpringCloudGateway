@@ -12,7 +12,6 @@ public class CustomSimpleRegistry {
     private  MeterRegistry smr ;
 
     public CustomSimpleRegistry(MeterRegistry mr) {
-        System.out.println("Instantiation of CustomSimpleRegistry");
         this.smr=mr;
         Metrics.addRegistry(mr);
     }
