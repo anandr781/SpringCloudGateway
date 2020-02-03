@@ -30,27 +30,31 @@ spring:
         host-append: true
         proto-enabled: true
       default-filters:
-        - name: GlobalFilterFactory
+        - name: Global
       routes:
-        - id: appRoute1
-          uri: https://junkapp1.xyz.com
+        - id: appRoute0
+          uri: https://talentneuronrecruit.gartner.com
           predicates:
-            - Path=/junk1/gInfo/**
-            - Custom   #Remove this line , this was just to illustrate how to build customRoutePredicateFactory
+            - Path=/tnr/gInfo/**
           filters:
-            - TNToolsRewritePath=/tnrecruit(?<segment>/?.*), $\{segment} #(replaces /foo/bar with only /bar )
+            - CustomRewritePath=/tnr(?<segment>/?.*), $\{segment} #(replaces /foo/bar with only /bar )
+        - id: appRoute1
+          uri: https://talentneuronplan.gartner.com
+          predicates:
+            - Path=/tnp/gInfo/**
+            # - Custom   #Remove this line , this was just to illustrate how to build customRoutePredicateFactory
+          filters:
+            - CustomRewritePath=/tnp(?<segment>/?.*), $\{segment} #(replaces /foo/bar with only /bar )
         - id: appRoute2
           uri: https://junkapp2.xyz.com
           predicates:
             - Path=/junk2/gInfo/**
           filters:
-            - TNToolsRewritePath=/tnhomepage(?<segment>/?.*), $\{segment}
+            - CustomRewritePath=/tnhomepage(?<segment>/?.*), $\{segment}
         - id: appRoute3
           uri: https://junkapp3.xyz.com
           predicates:
             - Path=/junk3/gInfo/**
           filters:
-            - TNToolsRewritePath=/tnplan(?<segment>/?.*), $\{segment}
-        - id: ADFSroute1
-          url:
+            - CustomRewritePath=/tnplan(?<segment>/?.*), $\{segment}
 

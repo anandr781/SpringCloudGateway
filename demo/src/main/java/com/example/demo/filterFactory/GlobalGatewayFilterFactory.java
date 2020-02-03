@@ -1,9 +1,21 @@
 package com.example.demo.filterFactory;
 
+import com.example.registries.CustomSimpleRegistry;
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Metrics;
+import io.micrometer.prometheus.PrometheusMeterRegistry;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
+import com.example.registries.Maths;
+import com.example.registries.Maths;
+
+import javax.annotation.PostConstruct;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Component
@@ -11,7 +23,15 @@ public class GlobalGatewayFilterFactory extends AbstractGatewayFilterFactory<Glo
 
     public GlobalGatewayFilterFactory() {
         super(Config.class);
+
     }
+
+    @Autowired
+    @Qualifier("mathService")
+    private Maths maths;
+
+    @Autowired
+    private CustomSimpleRegistry smr;
 
     @Override
     public GatewayFilter apply(Config config) {
@@ -28,6 +48,7 @@ public class GlobalGatewayFilterFactory extends AbstractGatewayFilterFactory<Glo
             ServerHttpRequest request = exchange.getRequest();
             request.mutate().header("Via", "1.1 SpringCG")
                     .build();
+            smr.IncrementCounter("globalfilter.requestscount","requestURI",request.getURI().toString());
             return chain.filter(exchange.mutate().request(request).build());
         };
     }
