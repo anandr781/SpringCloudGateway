@@ -2,9 +2,6 @@ package com.example.demo.filterFactory;
 
 import com.example.registries.CustomSimpleRegistry;
 import com.example.registries.Maths;
-import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.simple.SimpleMeterRegistry;
-import io.micrometer.prometheus.PrometheusConfig;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
