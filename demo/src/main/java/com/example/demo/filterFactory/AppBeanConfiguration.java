@@ -1,6 +1,7 @@
 package com.example.demo.filterFactory;
 
-import com.example.registries.CustomSimpleRegistry;
+import com.example.registries.CustomMetricsRegistry;
+import com.example.registries.ICustomMetricsRegistry;
 import com.example.registries.Maths;
 import io.micrometer.prometheus.PrometheusMeterRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class AppBeanConfiguration {
     private PrometheusMeterRegistry pmr;
 
     @Bean
-    public CustomSimpleRegistry PrometheusMeterRegistry(){
-        return  new CustomSimpleRegistry(pmr);
+    public ICustomMetricsRegistry PrometheusMeterRegistry(){
+        return  new CustomMetricsRegistry(pmr);
     }
 }

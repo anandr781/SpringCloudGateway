@@ -1,9 +1,7 @@
 package com.example.demo.filterFactory;
 
-import com.example.registries.CustomSimpleRegistry;
-import io.micrometer.core.instrument.MeterRegistry;
-import io.micrometer.core.instrument.Metrics;
-import io.micrometer.prometheus.PrometheusMeterRegistry;
+import com.example.registries.CustomMetricsRegistry;
+import com.example.registries.ICustomMetricsRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
@@ -11,11 +9,6 @@ import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFac
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import com.example.registries.Maths;
-import com.example.registries.Maths;
-
-import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.Map;
 
 
 @Component
@@ -31,7 +24,7 @@ public class GlobalGatewayFilterFactory extends AbstractGatewayFilterFactory<Glo
     private Maths maths;
 
     @Autowired
-    private CustomSimpleRegistry smr;
+    private ICustomMetricsRegistry smr;
 
     @Override
     public GatewayFilter apply(Config config) {

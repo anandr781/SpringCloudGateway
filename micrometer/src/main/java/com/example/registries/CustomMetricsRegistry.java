@@ -7,20 +7,20 @@ import io.micrometer.core.instrument.Tag;
 import java.util.*;
 
 
-public class CustomSimpleRegistry {
+public class CustomMetricsRegistry implements ICustomMetricsRegistry {
 
     private  MeterRegistry smr ;
 
-    public CustomSimpleRegistry(MeterRegistry mr) {
+    public CustomMetricsRegistry(MeterRegistry mr) {
         this.smr=mr;
         Metrics.addRegistry(mr);
     }
 
-    public void IncrementCounter(String name,String tag,String value){
+    public void IncrementCounter(String name, String tag, String value){
         smr.counter(name,tag,value).increment();
     }
 
-    public void AddCounter(String name, String tag,String value) {
+    public void AddCounter(String name, String tag, String value) {
         smr.counter(name, tag,value);
     }
 
