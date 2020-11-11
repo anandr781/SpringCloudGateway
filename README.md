@@ -1,4 +1,4 @@
-# SpringCloudGateway
+# SpringCloudGateway -- This is purely experimental and meant to be random playarea
 A minimal API Gateway implementation with Spring Cloud. 
 
 ### API Gateway concerns are as follows : 
