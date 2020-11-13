@@ -1,5 +1,5 @@
 # SpringCloudGateway -- This is purely experimental and meant to be random playarea
-A minimal API Gateway implementation with Spring Cloud. 
+A minimal API Gateway implementation with Spring Cloud. -- This is purely experimental and meant to be random playarea
 
 ### API Gateway concerns are as follows : 
 
